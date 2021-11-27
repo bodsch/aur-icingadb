@@ -1,0 +1,17 @@
+pkgbase = icingadb
+	pkgdesc = Icinga configuration and state database
+	pkgver = 1.0.0
+	pkgrel = 1
+	epoch = 1
+	url = https://icinga.com/docs/icinga-db
+	arch = x86_64
+	license = GPL-2.0
+	source = icingadb-1.0.0-x86_64.deb::https://packages.icinga.com/debian/pool/main/i/icingadb/icingadb_1.0.0~rc2-1.bullseye_amd64.deb,
+	source = icingadb-1.0.0-Release::https://packages.icinga.com/debian/dists/icinga-bullseye-testing/Release
+	source = icingadb-1.0.0-Release.sig::https://packages.icinga.com/debian/dists/icinga-bullseye-testing/Release.gpg
+	validpgpkeys = F51A91A5EE001AA5D77D53C4C6E319C334410682
+	sha512sums = 5a678140ee71875e04ee509c089b010a0dce6fdd21d748ed2b05cafee99972ee737481e7df829b26579ec40323591375f91e7f62076937f8e821f1d6d445c41f
+	sha512sums = 0ddc38d01b7e84504c96361ea5041c32fab09893420cc516afd0b20cb501b25b46bb797f559f42f36464ba55c0cace5080fc1bd1f6671aa1127c091d7e416177
+	sha512sums = 9612db5509e18c2dbd0f03d8c07e3541f22f6f0c4e4369a2c5161d02a86dc2712ba08270900e3451ce10304a92cbca6c1459a3ba57dfdd8bd8462909d721ef8c
+
+pkgname = icingadb
