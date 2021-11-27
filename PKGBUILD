@@ -11,6 +11,8 @@ arch=('x86_64')
 license=('GPL-2.0')
 url='https://icinga.com/docs/icinga-db'
 
+install='icingadb.install'
+
 source=(
   "${pkgname}-${pkgver}-x86_64.deb::https://packages.icinga.com/debian/pool/main/i/icingadb/icingadb_${pkgver}~rc2-${pkgrel}.bullseye_amd64.deb"
   "${pkgname}-${pkgver}-Release::https://packages.icinga.com/debian/dists/icinga-bullseye-testing/Release"
@@ -34,6 +36,8 @@ package() {
 
   install -D --mode=0755 "${pkgdir}/lib/systemd/system/icingadb.service"  "${pkgdir}/usr/lib/systemd/system/icingadb.service"
   install -D --mode=0755 "${pkgdir}/usr/sbin/icingadb" "${pkgdir}/usr/bin/icingadb"
+
+  chmod 0750 ${pkgdir}/etc/icingadb
 
   rm --recursive --force "${pkgdir}/lib"
   rm --recursive --force "${pkgdir}/usr/sbin"

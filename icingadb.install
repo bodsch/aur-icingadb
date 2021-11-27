@@ -15,6 +15,27 @@ _stop_and_disable_service() {
   systemctl disable icingadb
 }
 
+pre_install() {
+  _icingadb_user="icingadb"
+  _icingadb_group="icingadb"
+  _icingadb_gid=669
+  _icingadb_uid=669
+
+  getent group icingadb  > /dev/null || groupadd \
+    --system \
+    --gid $_icingadb_gid \
+    $_icingadb_group > /dev/null
+  getent passwd icingadb > /dev/null || useradd \
+    --system \
+    --uid $_icingadb_uid \
+    --gid $_icingadb_group \
+    --home-dir /etc/icingadb \
+    --no-create-home \
+    --shell /bin/false \
+    $_icingadb_user > /dev/null
+
+}
+
 # arg 1:  the new package version
 post_install() {
   /usr/bin/chown -R icingadb:icingadb \
@@ -46,5 +67,12 @@ pre_remove() {
 
 # arg 1:  the old package version
 post_remove() {
+  _icingadb_user="icingadb"
+  _icingadb_group="icingadb"
+
   systemctl daemon-reload
+
+  getent group icingadb  > /dev/null && \
+    userdel \
+      ${_icingadb_user}
 }
