@@ -51,8 +51,8 @@ EOF
 
 _stop_and_disable_service() {
   systemctl daemon-reload
-  systemctl stop ckb-daemon
-  systemctl disable ckb-daemon
+  systemctl stop icingadb
+  systemctl disable icingadb
 }
 
 # arg 1:  the new package version
