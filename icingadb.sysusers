@@ -1,0 +1,3 @@
+u icingadb - "IcingaDB User" /etc/icingadb
+g icingadb - -
+m icingadb icingadb

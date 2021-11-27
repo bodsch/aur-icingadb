@@ -1,0 +1,50 @@
+
+_as_service() {
+    cat << EOF
+
+Start icingadb manually or enable the service:
+  systemctl start icingadb'
+  systemctl enable icingadb'
+
+EOF
+}
+
+_stop_and_disable_service() {
+  systemctl daemon-reload
+  systemctl stop icingadb
+  systemctl disable icingadb
+}
+
+# arg 1:  the new package version
+post_install() {
+  /usr/bin/chown -R icingadb:icingadb \
+    /etc/icingadb
+
+  /usr/bin/chmod 0750 /etc/icingadb
+  /usr/bin/chmod 0640 /etc/icingadb/config.yml
+
+  _as_service
+}
+
+# arg 1:  the new package version
+# arg 2:  the old package version
+pre_upgrade() {
+  _stop_and_disable_service
+}
+
+# arg 1:  the new package version
+# arg 2:  the old package version
+post_upgrade() {
+  systemctl daemon-reload
+  _as_service
+}
+
+# arg 1:  the old package version
+pre_remove() {
+  _stop_and_disable_service
+}
+
+# arg 1:  the old package version
+post_remove() {
+  systemctl daemon-reload
+}
