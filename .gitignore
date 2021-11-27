@@ -1,0 +1,7 @@
+/icingadb-*-Release
+/icingadb-*-Release.sig
+/icingadb-*-x86_64.deb
+/src/
+/pkg/
+*~
+*.swp
