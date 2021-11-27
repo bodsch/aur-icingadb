@@ -12,18 +12,10 @@ license=('GPL-2.0')
 url='https://icinga.com/docs/icinga-db'
 
 source=(
-
-# https://packages.icinga.com/debian/pool/main/i/icingadb/icingadb_1.0.0~rc2-1.bullseye_amd64.deb
-# https://packages.icinga.com/debian/pool/main/i/icingadb/icingadb_1.0.0~rc2-1.bullseye_amd64.deb
   "${pkgname}-${pkgver}-x86_64.deb::https://packages.icinga.com/debian/pool/main/i/icingadb/icingadb_${pkgver}~rc2-${pkgrel}.bullseye_amd64.deb",
   "${pkgname}-${pkgver}-Release::https://packages.icinga.com/debian/dists/icinga-bullseye-testing/Release"
   "${pkgname}-${pkgver}-Release.sig::https://packages.icinga.com/debian/dists/icinga-bullseye-testing/Release.gpg"
 )
-
-#0ddc38d01b7e84504c96361ea5041c32fab09893420cc516afd0b20cb501b25b46bb797f559f42f36464ba55c0cace5080fc1bd1f6671aa1127c091d7e416177  icingadb-1.0.0-Release
-#9612db5509e18c2dbd0f03d8c07e3541f22f6f0c4e4369a2c5161d02a86dc2712ba08270900e3451ce10304a92cbca6c1459a3ba57dfdd8bd8462909d721ef8c  icingadb-1.0.0-Release.sig
-#5a678140ee71875e04ee509c089b010a0dce6fdd21d748ed2b05cafee99972ee737481e7df829b26579ec40323591375f91e7f62076937f8e821f1d6d445c41f  icingadb-1.0.0-x86_64.deb
-
 
 sha512sums=(
   "5a678140ee71875e04ee509c089b010a0dce6fdd21d748ed2b05cafee99972ee737481e7df829b26579ec40323591375f91e7f62076937f8e821f1d6d445c41f"
@@ -40,10 +32,11 @@ package() {
 
   tar -xf data.tar.xz -C "${pkgdir}"
 
-  install -D --mode=750 usr/sbin/icingadb "${pkgdir}/usr/sbin/icingadb"
+  install -D --mode=0755 "${pkgdir}/lib/systemd/system/icingadb.service"  "${pkgdir}/usr/lib/systemd/system/icingadb.service"
+  install -D --mode=0755 "${pkgdir}/usr/sbin/icingadb" "${pkgdir}/usr/bin/icingadb"
 
-#  install -D --mode=0750 "${pkgdir}/usr/sbin/icingadb" /usr/sbin/icingadb
-#  install --direcory --mode=0750 "${pkgdir}/etc/icingadb" /etc/icingadb
+  rm --recursive --force "${pkgdir}/lib"
+  rm --recursive --force "${pkgdir}/usr/sbin"
 }
 
 _as_service() {
