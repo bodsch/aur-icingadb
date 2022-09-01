@@ -1,0 +1,34 @@
+---
+name: Make Repository
+
+on:
+  push:
+    branches:
+      - main
+      - debug
+  schedule:
+    - cron: "21 4 * * 0"
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    container:
+      image: archlinux:latest
+
+    steps:
+      - name: Prepare Arch Linux
+        run: |
+          pacman -Syu base-devel zsh p7zip --noconfirm --needed --noprogressbar
+
+      - name: check out the codebase.
+        uses: actions/checkout@v2
+        with:
+          path: 'aur-icingadb'
+
+      - name: build icingadb
+        run: |
+          cd cd icingadb
+          makepkg --cleanbuild --noprogressbar --clean --force --noconfirm
+
+      - name: List generated Files
+        run: ls -1 > ${{ github.workspace }}/files.txt
