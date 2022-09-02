@@ -10,25 +10,41 @@ on:
     - cron: "21 4 * * 0"
 
 jobs:
-  build:
+  pkgbuild:
     runs-on: ubuntu-latest
-    container:
-      image: archlinux:latest
-
     steps:
-      - name: Prepare Arch Linux
-        run: |
-          pacman -Syu base-devel zsh p7zip --noconfirm --needed --noprogressbar
 
-      - name: check out the codebase.
-        uses: actions/checkout@v2
-        with:
-          path: 'aur-icingadb'
+    - name: Checkout
+      uses: actions/checkout@v2
 
-      - name: build icingadb
-        run: |
-          cd aur-icingadb
-          makepkg --cleanbuild --noprogressbar --clean --force --noconfirm
+    - name: Makepkg Build and Check
+      id: makepkg
+      uses: edlanglois/pkgbuild-action@v1
 
-      - name: List generated Files
-        run: ls -1 > ${{ github.workspace }}/files.txt
+    - name: Print Package Files
+      run: |
+        echo "Successfully created the following package archive"
+        echo "Package: ${{ steps.makepkg.outputs.pkgfile0 }}"
+
+  # build:
+  #   runs-on: ubuntu-latest
+  #   container:
+  #     image: archlinux:latest
+  #
+  #   steps:
+  #     - name: Prepare Arch Linux
+  #       run: |
+  #         pacman -Syu base-devel zsh p7zip --noconfirm --needed --noprogressbar
+  #
+  #     - name: check out the codebase.
+  #       uses: actions/checkout@v2
+  #       with:
+  #         path: 'aur-icingadb'
+  #
+  #     - name: build icingadb
+  #       run: |
+  #         cd aur-icingadb
+  #         makepkg --cleanbuild --noprogressbar --clean --force --noconfirm
+  #
+  #     - name: List generated Files
+  #       run: ls -1 > ${{ github.workspace }}/files.txt
