@@ -25,7 +25,8 @@ jobs:
       id: makepkg
       uses: edlanglois/pkgbuild-action@v1
       with:
-        INPUT_MAKEPKGARGS: --skippgpcheck
+        args:
+          INPUT_MAKEPKGARGS: --skippgpcheck
 
     - name: Print Package Files
       run: |
