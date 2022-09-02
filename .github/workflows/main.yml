@@ -27,7 +27,7 @@ jobs:
 
       - name: build icingadb
         run: |
-          cd cd icingadb
+          cd icingadb
           makepkg --cleanbuild --noprogressbar --clean --force --noconfirm
 
       - name: List generated Files
