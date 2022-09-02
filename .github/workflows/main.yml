@@ -27,7 +27,7 @@ jobs:
 
       - name: build icingadb
         run: |
-          cd icingadb
+          cd aur-icingadb
           makepkg --cleanbuild --noprogressbar --clean --force --noconfirm
 
       - name: List generated Files
