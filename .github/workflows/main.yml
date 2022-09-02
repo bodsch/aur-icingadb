@@ -17,9 +17,15 @@ jobs:
     - name: Checkout
       uses: actions/checkout@v2
 
+    #- name: import GPG key
+    #  run: |
+    #    sudo pacman-key --recv-keys F51A91A5EE001AA5D77D53C4C6E319C334410682
+
     - name: Makepkg Build and Check
       id: makepkg
       uses: edlanglois/pkgbuild-action@v1
+      with:
+        INPUT_MAKEPKGARGS: --skippgpcheck
 
     - name: Print Package Files
       run: |
