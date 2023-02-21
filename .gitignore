@@ -1,7 +1,9 @@
-/icingadb-*-Release
-/icingadb-*-Release.sig
-/icingadb-*-x86_64.deb
+Release
+Release.sig
+Release.gpg
+*.deb
 /src/
 /pkg/
 *~
 *.swp
+.directory
