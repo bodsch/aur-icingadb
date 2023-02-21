@@ -1,4 +1,5 @@
 ---
+
 name: Make Repository
 
 on:
@@ -6,6 +7,7 @@ on:
     branches:
       - main
       - debug
+      - feature/**
   schedule:
     - cron: "21 4 * * 0"
 
