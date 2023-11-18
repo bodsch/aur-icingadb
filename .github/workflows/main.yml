@@ -25,14 +25,14 @@ jobs:
 
     - name: Makepkg Build and Check
       id: makepkg
-      uses: edlanglois/pkgbuild-action@v1.1.8
+      uses: Pinghigh/pkgbuild-action@v5.1
       with:
         makepkgArgs: "--skippgpcheck --noconfirm"
 
     - name: Print Package Files
       run: |
-        echo "Successfully created the following package archive" >> $GITHUB_OUTPUT
-        echo "Package: ${{ steps.makepkg.outputs.pkgfile0 }}"     >> $GITHUB_OUTPUT
+        echo "Successfully created the following package archive"
+        echo "Package: ${{ steps.makepkg.outputs.pkgfile0 }}"
 
   # build:
   #   runs-on: ubuntu-latest
