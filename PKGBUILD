@@ -1,7 +1,7 @@
 # Maintainer: Bodo Schulz <bodo@boone-schulz.de>
 
 pkgname=icingadb
-pkgver=1.1.0
+pkgver=1.1.1
 pkgrel=1
 pkgdesc='Icinga configuration and state database'
 arch=('x86_64')
@@ -13,13 +13,13 @@ install='icingadb.install'
 source=(
   # https://packages.icinga.com/debian/pool/main/i/icingadb/icingadb_1.0.0-1.bullseye_amd64.deb"
   # https://packages.icinga.com/debian/pool/main/i/icingadb/icingadb_1.1.0-1+debian11_amd64.deb
-  "${pkgname}-${pkgver}-${CARCH}.deb::https://packages.icinga.com/debian/pool/main/i/icingadb/icingadb_${pkgver}-${pkgrel}+debian11_amd64.deb"
+  "${pkgname}-${pkgver}-${CARCH}.deb::https://packages.icinga.com/debian/pool/main/i/icingadb/icingadb_${pkgver}-${pkgrel}+debian12_amd64.deb"
   "${pkgname}-${pkgver}-Release::https://packages.icinga.com/debian/dists/icinga-bullseye/Release"
   "${pkgname}-${pkgver}-Release.sig::https://packages.icinga.com/debian/dists/icinga-bullseye/Release.gpg"
 )
 
 sha512sums=(
-  "3f78e7be26b0b255236687b28ee1645310eff3cd14a0e34b7ea91ee135dffb8846ff9262c346c975c59bd0dd6ebdf0c68a69cce8daeae94aaab4a4372088deee"
+  "df3579c44215a49a1efaf8938a1e46fbc5d3c907cca44999d9f9812fc4f0336d42731884e3af5610e72b836a057d431960e2a8ea33d757d66a3c4972311b581e"
   "SKIP"
   "SKIP"
 )

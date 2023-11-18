@@ -31,8 +31,8 @@ jobs:
 
     - name: Print Package Files
       run: |
-        echo "Successfully created the following package archive"
-        echo "Package: ${{ steps.makepkg.outputs.pkgfile0 }}"
+        echo "Successfully created the following package archive" >> $GITHUB_OUTPUT
+        echo "Package: ${{ steps.makepkg.outputs.pkgfile0 }}"     >> $GITHUB_OUTPUT
 
   # build:
   #   runs-on: ubuntu-latest

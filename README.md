@@ -10,4 +10,6 @@ To install on Arch Linux, use your favourite AUR helper or build manually with:
 git clone https://github.com/bodsch/aur-icingadb icingadb
 cd icingadb
 makepkg --cleanbuild --noprogressbar --clean --force --noconfirm
+
+makepkg --printsrcinfo > .SRCINFO
 ```
