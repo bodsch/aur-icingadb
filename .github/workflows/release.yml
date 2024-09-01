@@ -26,7 +26,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
         with:
-          ref: ${{ matrix.release_tag }
+          ref: ${{ matrix.release_tag }}
 
       - name: tests
         run: |
