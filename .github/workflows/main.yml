@@ -31,7 +31,7 @@ jobs:
 
     - name: Makepkg Build and Check
       id: makepkg
-      uses: bodsch/pkgbuild-action@v2
+      uses: https://github.com/bodsch/pkgbuild-action@v2
       with:
         makepkgArgs: "--skippgpcheck --noconfirm"
 
