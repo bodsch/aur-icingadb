@@ -7,6 +7,9 @@ on:
   push:
     tags:
       - '*'
+    paths:
+      - "!README.md"
+      - '.github/workflows/release.yml'
 
 permissions:
   # Allow creating GitHub release
