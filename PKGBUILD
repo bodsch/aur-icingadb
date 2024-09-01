@@ -1,7 +1,7 @@
 # Maintainer: Bodo Schulz <bodo@boone-schulz.de>
 
 pkgname=icingadb
-pkgver=1.2.0
+pkgver=1.1.1
 pkgrel=1
 pkgdesc='Icinga configuration and state database'
 arch=('x86_64')
@@ -19,7 +19,7 @@ source=(
 )
 
 sha512sums=(
-  "9c5aeb2cac7fd2be2021429c9d1ff767b531c4fb3d6e296890aaa3e49eac529c706328c7a8af45e41ef5795bb596a9078ef9399748b5a1a6750a851432964fda"
+  "df3579c44215a49a1efaf8938a1e46fbc5d3c907cca44999d9f9812fc4f0336d42731884e3af5610e72b836a057d431960e2a8ea33d757d66a3c4972311b581e"
   "SKIP"
   "SKIP"
 )
