@@ -17,7 +17,7 @@ jobs:
     steps:
 
     - name: Checkout
-      uses: actions/checkout@v3
+      uses: actions/checkout@v4
 
     #- name: import GPG key
     #  run: |
@@ -31,8 +31,16 @@ jobs:
 
     - name: Print Package Files
       run: |
+        echo "package={steps.makepkg.outputs.pkgfile0}" >> $GITHUB_ENV
         echo "Successfully created the following package archive"
-        echo "Package: ${{ steps.makepkg.outputs.pkgfile0 }}"
+        printf '%s\n' "$package"
+        # echo "Package: ${{ steps.makepkg.outputs.pkgfile0 }}"
+
+    Uncomment to upload the package as an artifact
+    - name: Upload Package Archive
+      uses: actions/upload-artifact@v4
+      with:
+        path: ${{ steps.makepkg.outputs.pkgfile0 }}
 
   # build:
   #   runs-on: ubuntu-latest
