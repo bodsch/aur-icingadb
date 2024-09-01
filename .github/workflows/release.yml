@@ -19,6 +19,10 @@ jobs:
     - name: Checkout
       uses: actions/checkout@v4
 
+    - name: tests
+      run: |
+        echo ${{ github.ref }}
+
     - name: Makepkg Build and Check
       id: makepkg
       uses: Pinghigh/pkgbuild-action@v5
@@ -40,3 +44,5 @@ jobs:
         files: |
           ${{ steps.makepkg.outputs.pkgfile0 }}
         token: ${{ github.token }}
+        tag_name: ${{ github.ref }}
+        # ${{ matrix.release_tag }}
