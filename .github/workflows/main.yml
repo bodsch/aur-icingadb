@@ -36,7 +36,7 @@ jobs:
         printf '%s\n' "$package"
         # echo "Package: ${{ steps.makepkg.outputs.pkgfile0 }}"
 
-    Uncomment to upload the package as an artifact
+    # Uncomment to upload the package as an artifact
     - name: Upload Package Archive
       uses: actions/upload-artifact@v4
       with:
