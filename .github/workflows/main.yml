@@ -8,7 +8,11 @@ on:
       - main
       - debug
       - feature/**
+    paths:
+      - "!README.md"
+      - '.github/workflows/main.yml'
     tags:
+      - "*"
   schedule:
     - cron: "21 4 * * 0"
 
