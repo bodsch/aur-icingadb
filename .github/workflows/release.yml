@@ -1,0 +1,42 @@
+---
+
+name: Release
+
+on:
+  workflow_dispatch:
+  push:
+    tags:
+
+permissions:
+  # Allow creating GitHub release
+  contents: write
+
+jobs:
+  pkgbuild:
+    runs-on: ubuntu-latest
+    steps:
+
+    - name: Checkout
+      uses: actions/checkout@v4
+
+    - name: Makepkg Build and Check
+      id: makepkg
+      uses: Pinghigh/pkgbuild-action@v5
+      with:
+        makepkgArgs: "--skippgpcheck --noconfirm"
+
+    # # Uncomment to upload the package as an artifact
+    # - name: Upload Package Archive
+    #   id: upload_package
+    #   uses: actions/upload-artifact@v4
+    #   with:
+    #     name: ${{ steps.makepkg.outputs.pkgfile0 }}
+    #     path: ${{ steps.makepkg.outputs.pkgfile0 }}
+
+    - name: Release
+      uses: softprops/action-gh-release@v2
+      if: startsWith(github.ref, 'refs/tags/')
+      with:
+        files: |
+          ${{ steps.makepkg.outputs.pkgfile0 }}
+        token: ${{ github.token }}
