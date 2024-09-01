@@ -39,10 +39,22 @@ jobs:
         name: ${{ steps.makepkg.outputs.pkgfile0 }}
         path: ${{ steps.makepkg.outputs.pkgfile0 }}
 
-    - name: upload artifact
-      uses: actions/upload-release-asset@v1
-      env:
-        GITHUB_TOKEN: ${{ github.token }}
+    - name: Release
+      uses: softprops/action-gh-release@v2
+      if: startsWith(github.ref, 'refs/tags/')
       with:
-        asset_path: ${{ steps.makepkg.outputs.pkgfile0 }}
-        asset_name: ${{ steps.makepkg.outputs.pkgfile0 }}
+        files: |
+          ${{ steps.makepkg.outputs.pkgfile0 }}
+        token: ${{ github.token }}
+      permissions:
+        contents: write
+
+    # - name: upload artifact
+    #   uses: actions/upload-release-asset@v3
+    #   env:
+    #     GITHUB_TOKEN: ${{ github.token }}
+    #   with:
+    #     upload_url: ""
+    #     asset_path: ${{ steps.makepkg.outputs.pkgfile0 }}
+    #     asset_name: ${{ steps.makepkg.outputs.pkgfile0 }}
+    #     asset_content_type: application/zstd
