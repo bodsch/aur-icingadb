@@ -21,7 +21,7 @@ jobs:
 
     - name: Makepkg Build and Check
       id: makepkg
-      uses: Pinghigh/pkgbuild-action@v5.1
+      uses: Pinghigh/pkgbuild-action@v5
       with:
         makepkgArgs: "--skippgpcheck --noconfirm"
 
@@ -31,12 +31,10 @@ jobs:
         echo "Successfully created the following package archive"
         printf '%s\n' "$package"
 
-    # # Uncomment to upload the package as an artifact
-    # - name: Upload Package Archive
-    #   id: upload_package
-    #   uses: actions/upload-artifact@v4
-    #   with:
-    #     name: $package
-    #     path: $PACKAGE_PATH
-    #   env:
-    #     PACKAGE_PATH: ${{ steps.makepkg.outputs.pkgfile0 }}
+    # Uncomment to upload the package as an artifact
+    - name: Upload Package Archive
+      id: upload_package
+      uses: actions/upload-artifact@v4
+      with:
+        name: ${{ steps.makepkg.outputs.pkgfile0 }}
+        path: ${{ steps.makepkg.outputs.pkgfile0 }}
