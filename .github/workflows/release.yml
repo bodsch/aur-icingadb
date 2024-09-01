@@ -17,13 +17,13 @@ permissions:
 
 jobs:
   release-pkg:
-    name: "release pkg version: ${{ matrix.release_tag }}"
+    name: "release pkg"
     runs-on: ubuntu-latest
-    strategy:
-      fail-fast: false
-      matrix:
-        release_tag:
-          - 1.2.0
+    # strategy:
+    #   fail-fast: false
+    #   matrix:
+    #     release_tag:
+    #       - 1.2.0
 
     steps:
       - name: Checkout
@@ -52,9 +52,9 @@ jobs:
 
       - name: Release
         uses: softprops/action-gh-release@v2
-        # if: startsWith(github.ref, 'refs/tags/')
+        if: startsWith(github.ref, 'refs/tags/')
         with:
           files: |
             ${{ steps.makepkg.outputs.pkgfile0 }}
           token: ${{ github.token }}
-          tag_name: ${{ matrix.release_tag }}
+          # tag_name: ${{ matrix.release_tag }}
