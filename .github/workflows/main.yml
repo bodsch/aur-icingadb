@@ -36,9 +36,8 @@ jobs:
 
     - name: Print Package Files
       run: |
-        echo "package=${{ steps.makepkg.outputs.pkgfile0 }}" >> $GITHUB_ENV
         echo "Successfully created the following package archive"
-        printf '%s\n' "$package"
+        printf '%s\n' "${{ steps.makepkg.outputs.pkgfile0 }}"
 
     # Uncomment to upload the package as an artifact
     - name: Upload Package Archive
