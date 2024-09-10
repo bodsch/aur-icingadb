@@ -7,3 +7,6 @@ Release.gpg
 *~
 *.swp
 .directory
+icingadb*Release
+icingadb*Release.sig
+icingadb*pkg.tar.zst

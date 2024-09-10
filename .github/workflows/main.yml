@@ -3,7 +3,6 @@
 name: Make Repository
 
 on:
-  workflow_dispatch:
   push:
     branches:
       - main
@@ -31,7 +30,7 @@ jobs:
 
     - name: Makepkg Build and Check
       id: makepkg
-      uses: https://github.com/bodsch/pkgbuild-action@v2
+      uses: bodsch/pkgbuild-action@v2
       with:
         makepkgArgs: "--skippgpcheck --noconfirm"
 

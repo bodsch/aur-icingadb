@@ -38,7 +38,7 @@ jobs:
 
       - name: Makepkg Build and Check
         id: makepkg
-        uses: Pinghigh/pkgbuild-action@v5
+        uses: bodsch/pkgbuild-action@v2
         with:
           makepkgArgs: "--skippgpcheck --noconfirm"
 
