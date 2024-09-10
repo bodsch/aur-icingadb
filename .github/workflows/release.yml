@@ -19,6 +19,7 @@ jobs:
   release-pkg:
     name: "release pkg"
     runs-on: ubuntu-latest
+    if: startsWith(github.ref, 'refs/tags/')
 
     steps:
       - name: Checkout
